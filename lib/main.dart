@@ -3,11 +3,25 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/rendering.dart';
 
 import 'src/home.dart';
+import 'src/header.dart';
+// import 'src/footer.dart';
+import 'src/root.dart';
 
 
-import 'package:flutter/material.dart';
+void main() => runApp(HeaderApp());
 
-void main() => runApp(MyApp());
+class HeaderApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      home: RootWidget(),
+    );
+  }
+}
+
+
 
 class MyApp extends StatelessWidget {
   static const String _title = 'Flutter Code Sample';
@@ -16,9 +30,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: _title,
-      // home: HomePage(),
+      home: HomePage(),
       // home: MainPage(),
-      home: Home()
+      // home: Home()
     );
   }
 }
@@ -34,7 +48,7 @@ class _HomePageState extends State<HomePage> {
   static List<Widget> _pageList = [
     CustomPage(pannelColor: Colors.cyan, title: 'Home'),
     CustomPage(pannelColor: Colors.green, title: 'Settings'),
-    MainPage()
+    Home()
   ];
 
   void _onItemTapped(int index) {
@@ -46,9 +60,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Fultter Tutorial'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Fultter Tutorial'),
+      // ),
       body: _pageList[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -81,20 +95,26 @@ class CustomPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final titleTextStyle = Theme.of(context).textTheme.title;
-    return Container(
-      child: Center(
-        child: Container(
-          width: 200,
-          height: 200,
-          decoration: BoxDecoration(
-              color: pannelColor,
-              borderRadius: BorderRadius.all(Radius.circular(20.0))),
-          child: Center(
-            child: Text(
-              title,
-              style: TextStyle(
-                fontSize: titleTextStyle.fontSize,
-                color: titleTextStyle.color,
+
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('Color material'),
+      ),
+      body: new Container(
+        child: Center(
+          child: Container(
+            width: 200,
+            height: 200,
+            decoration: BoxDecoration(
+                color: pannelColor,
+                borderRadius: BorderRadius.all(Radius.circular(20.0))),
+            child: Center(
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontSize: titleTextStyle.fontSize,
+                  color: titleTextStyle.color,
+                ),
               ),
             ),
           ),
